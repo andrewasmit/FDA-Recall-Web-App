@@ -10,5 +10,10 @@ const uniAPIBase = 'http://universities.hipolabs.com/search?country=United+Kingd
 
 fetch(fdaRecallAPIBase)
 .then(res=>res.json())
-.then(data=>console.log(data));
+.then(data=>apiHandler(data.results));
 
+function apiHandler(e){
+    for (obj of e){
+        (console.log(obj));
+    }
+};
