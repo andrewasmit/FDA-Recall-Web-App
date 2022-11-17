@@ -6,10 +6,12 @@
 // FDA Recall Database 
 const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
 // There are plenty of attributes here to display;
-// City/State of recall
-// Product being recalled
-// Reason for being recalled
-// Distribution pattern
+// ---City/State of recall
+// ---Product being recalled
+// ---Reason for being recalled
+// ---Distribution pattern
+const dataContainer = document.querySelector('#data-container');
+const recallContainer = document.querySelector('#recall-container');
 
 
 fetch(fdaRecallAPIBase)
@@ -21,6 +23,11 @@ function apiHandler(e){
         (console.log(obj));
     }
 };
+
+// function cardCreator(e){
+//     document.
+// }
+
 
 
 // *********TO DO LIST - User deliverables *******
