@@ -43,7 +43,8 @@ function submitHandler(e){
     e.preventDefault();
     let stateInput = dropdownMenu.value;
     console.log(stateInput);
-    // dropdownMenu.default;
+    // dataContainer.innerText="";
+    narrowSearch(stateInput);
 }
 
 function narrowSearch(state){
@@ -54,11 +55,9 @@ function narrowSearch(state){
         .map(obj=>cardCreator(obj)));
 };
 
-// function stateFilter(e){
-//     console.log(e);
-// };
 
-narrowSearch('FL');
+
+narrowSearch('CA');
 
 
 // *********TO DO LIST - User deliverables *******
