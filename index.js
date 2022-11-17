@@ -41,11 +41,24 @@ searchForm.addEventListener('submit', submitHandler);
 
 function submitHandler(e){
     e.preventDefault();
-    console.log(dropdownMenu.value);
-    dropdownMenu.default;
+    let stateInput = dropdownMenu.value;
+    console.log(stateInput);
+    // dropdownMenu.default;
 }
 
+function narrowSearch(state){
+    fetch(fdaRecallAPIBase)
+    .then(res=>res.json())
+    .then(data=>
+        data.results.filter(obj=>obj.state === state)
+        .map(obj=>cardCreator(obj)));
+};
 
+// function stateFilter(e){
+//     console.log(e);
+// };
+
+narrowSearch('FL');
 
 
 // *********TO DO LIST - User deliverables *******
