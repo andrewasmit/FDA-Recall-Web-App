@@ -14,15 +14,17 @@ const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
 
 
+document.addEventListener('DOMContentLoaded', displayAllRecalls);
 
-
+function displayAllRecalls(){
 fetch(fdaRecallAPIBase)
 .then(res=>res.json())
 .then(data=>apiHandler(data.results));
+};
 
 function apiHandler(e){
     for (obj of e){
-        console.log(obj);
+        // console.log(obj);
         cardCreator(obj);
     }
 };
@@ -35,7 +37,6 @@ function cardCreator(e){
     <h3>Location: ${e.city}, ${e.state}</h3>
     <p>Reason for Recall: ${e.reason_for_recall}</p>
     `
-    // li.innerText = `${e.product_description}`
     recallContainer.appendChild(li);
 }
 
