@@ -9,8 +9,9 @@ const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
 const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
 const submitBtn = document.querySelector('#submit-search-btn');
-
-
+const zipInput = document.querySelector('#zipInput')
+const dropdownMenu = document.querySelector('#dropdown-menu');
+const searchForm = document.querySelector('#search-bar')
 
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
 
@@ -36,14 +37,27 @@ function cardCreator(e){
     recallContainer.appendChild(li);
 }
 
+searchForm.addEventListener('submit', submitHandler);
+
+function submitHandler(e){
+    e.preventDefault();
+    console.log(dropdownMenu.value);
+    dropdownMenu.default;
+}
+
+
 
 
 // *********TO DO LIST - User deliverables *******
-// 1. Create a displayAllRecalls() function that takes each obj and displays it on the DOM through a cardHandler() function
+// 1. Create a displayAllRecalls() function that takes each obj and displays it on the DOM through a cardHandler() function 
+// DONE!!!
 
 // 2. Trigger displayAllRecalls after DOMContentLoaded event listenser. 
+// DONE!!!
+
 // 3. Create a search bar that can help search the state where a recall is issued. (Dropdown bar for all 50???)
-// 4. When you click on an obj, it displays in a bigger view or a different manner somehow
+// DONE!!!
+// 4. When you click on an obj, it displays in a bigger view or a different manner
 
 
 // *********It would be nice to's... *******
