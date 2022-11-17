@@ -5,13 +5,11 @@
 
 // FDA Recall Database 
 const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
-// There are plenty of attributes here to display;
-// ---City/State of recall
-// ---Product being recalled
-// ---Reason for being recalled
-// ---Distribution pattern
+// Query Selector Variable Declarations
 const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
+const submitBtn = document.querySelector('#submit-search-btn');
+
 
 
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
@@ -19,15 +17,13 @@ document.addEventListener('DOMContentLoaded', displayAllRecalls);
 function displayAllRecalls(){
 fetch(fdaRecallAPIBase)
 .then(res=>res.json())
-.then(data=>apiHandler(data.results));
+// .then(data=>apiHandler(data.results));
+.then(data=>data.results.map(obj=>cardCreator(obj)));
 };
 
-function apiHandler(e){
-    for (obj of e){
-        // console.log(obj);
-        cardCreator(obj);
-    }
-};
+// function apiHandler(e){
+//     e.map(obj=>cardCreator(obj))
+// };
 
 function cardCreator(e){
     let li = document.createElement('li');
@@ -40,7 +36,6 @@ function cardCreator(e){
     recallContainer.appendChild(li);
 }
 
-console.log(dataContainer);
 
 
 // *********TO DO LIST - User deliverables *******
