@@ -17,7 +17,6 @@ const searchForm = document.querySelector('#search-bar')
 // ____Event Listeners
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
 searchForm.addEventListener('submit', submitHandler);
-restoreBtn.addEventListener('click', displayAllRecalls);
 
 
 
@@ -55,10 +54,13 @@ function cardCreator(e){
 function submitHandler(e){
     e.preventDefault();
     let stateInput = dropdownMenu.value;
-    console.log(stateInput);
     const lis = document.getElementsByTagName('li');
     const lisArr = Array.from(lis);
+    allRecalls(lisArr);
     narrowSearch(lisArr, stateInput);
+    restoreBtn.addEventListener('click', ()=>{
+        allRecalls(lisArr);
+    });
 };
 
 function narrowSearch(arr, state){
@@ -67,16 +69,16 @@ function narrowSearch(arr, state){
         if (target !== state){
             elem.style.display = 'none';
         }
-    }
-}
+    } 
+};
 
-// function narrowSearch(state){
-//     fetch(fdaRecallAPIBase)
-//     .then(res=>res.json())
-//     .then(data=>
-//         data.results.filter(obj=>obj.state === state)
-//         .map(obj=>cardCreator(obj)));
-// };
+function allRecalls(arr){
+    for (elem of arr){
+        elem.style.display = 'block';
+    }
+};
+
+
 
 // narrowSearch('CA');
 
