@@ -16,8 +16,8 @@ const lis = document.getElementsByTagName('li');
 
 // ____Event Listeners
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
-restoreBtn.addEventListener('click', displayAllRecalls);
 searchForm.addEventListener('submit', submitHandler);
+restoreBtn.addEventListener('click', displayAllRecalls);
 
 
 // ____Function Declarations
@@ -34,19 +34,19 @@ function cardCreator(e){
     li.display = 'block';
     let h2 = document.createElement('h2');
     h2.innerText = `Product: ${e.product_description}`;
-    recallContainer.append(h2);
+    li.append(h2);
     let h3a = document.createElement('h3');
     h3a.innerText = `City: ${e.city}`;
-    recallContainer.append(h3a);
+    li.append(h3a);
     let h3b = document.createElement('h3');
     h3b.innerText = `State: ${e.state}`;
-    recallContainer.append(h3b);
+    li.append(h3b);
     let h4 = document.createElement('h4');
     h4.innerText = `Zipcode: ${e.postal_code}`;
-    recallContainer.append(h4);
+    li.append(h4);
     let p = document.createElement('p');
     p.innerText = `Reason for Recall: ${e.reason_for_recall}`;
-    recallContainer.append(p);
+    li.append(p);
 
     // li.innerHTML = `
     // <h2>Product: ${e.product_description}</h2>
