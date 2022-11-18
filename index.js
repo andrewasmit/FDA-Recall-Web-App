@@ -9,15 +9,16 @@ const restoreBtn = document.querySelector('#restore-btn');
 const zipInput = document.querySelector('#zipInput')
 const dropdownMenu = document.querySelector('#dropdown-menu');
 const searchForm = document.querySelector('#search-bar')
-const lis = document.getElementsByTagName('li');
-// const lisArr = Array.from(lis);
-// console.log(lisArr);
+// const lis = document.getElementsByTagName('li');
+// // const lisArr = Array.from(lis);
+// // console.log(lisArr);
 
 
 // ____Event Listeners
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
 searchForm.addEventListener('submit', submitHandler);
 restoreBtn.addEventListener('click', displayAllRecalls);
+
 
 
 // ____Function Declarations
@@ -31,7 +32,7 @@ function cardCreator(e){
     // console.log(e);
     let li = document.createElement('li');
     li.className = 'card';
-    li.display = 'block';
+    li.style.display = 'block';
     let h2 = document.createElement('h2');
     h2.innerText = `Product: ${e.product_description}`;
     li.append(h2);
@@ -39,6 +40,7 @@ function cardCreator(e){
     h3a.innerText = `City: ${e.city}`;
     li.append(h3a);
     let h3b = document.createElement('h3');
+    h3b.innerHTML = 'id= stateId';
     h3b.innerText = `State: ${e.state}`;
     li.append(h3b);
     let h4 = document.createElement('h4');
@@ -47,12 +49,6 @@ function cardCreator(e){
     let p = document.createElement('p');
     p.innerText = `Reason for Recall: ${e.reason_for_recall}`;
     li.append(p);
-
-    // li.innerHTML = `
-    // <h2>Product: ${e.product_description}</h2>
-    // <h3>Location: ${e.city}, ${e.state}</h3>
-    // <p>Reason for Recall: ${e.reason_for_recall}</p>
-    // `
     recallContainer.appendChild(li);
 };
 
@@ -60,19 +56,29 @@ function submitHandler(e){
     e.preventDefault();
     let stateInput = dropdownMenu.value;
     console.log(stateInput);
-    // narrowSearch(stateInput);
-}
-
-function narrowSearch(state){
-    fetch(fdaRecallAPIBase)
-    .then(res=>res.json())
-    .then(data=>
-        data.results.filter(obj=>obj.state === state)
-        .map(obj=>cardCreator(obj)));
+    const lis = document.getElementsByTagName('li');
+    const lisArr = Array.from(lis);
+    narrowSearch(lisArr, stateInput);
 };
 
-// narrowSearch('CA');
+function narrowSearch(arr, state){
+    for (elem of arr){
+        let target = elem.childNodes[2].innerText.slice(7);
+        if (target !== state){
+            elem.style.display = 'none';
+        }
+    }
+}
 
+// function narrowSearch(state){
+//     fetch(fdaRecallAPIBase)
+//     .then(res=>res.json())
+//     .then(data=>
+//         data.results.filter(obj=>obj.state === state)
+//         .map(obj=>cardCreator(obj)));
+// };
+
+// narrowSearch('CA');
 
 
 
