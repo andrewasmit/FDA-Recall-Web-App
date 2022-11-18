@@ -1,50 +1,66 @@
-// const beerAPIBase = 'https://api.punkapi.com/v2/beers';
-// const tvShowAPIBase = 'http://api.tvmaze.com/search/shows?q=golden%20girls';
-// const uniAPIBase = 'http://universities.hipolabs.com/search?country=United+Kingdom';
-//---------------- 3 Attributes can be name, webpage, and country
-
 // FDA Recall Database 
 const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
+
 // Query Selector Variable Declarations
 const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
 const submitBtn = document.querySelector('#submit-search-btn');
+const restoreBtn = document.querySelector('#restore-btn');
 const zipInput = document.querySelector('#zipInput')
 const dropdownMenu = document.querySelector('#dropdown-menu');
 const searchForm = document.querySelector('#search-bar')
+const lis = document.getElementsByTagName('li');
+// const lisArr = Array.from(lis);
+// console.log(lisArr);
 
+
+// ____Event Listeners
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
+restoreBtn.addEventListener('click', displayAllRecalls);
+searchForm.addEventListener('submit', submitHandler);
 
+
+// ____Function Declarations
 function displayAllRecalls(){
 fetch(fdaRecallAPIBase)
 .then(res=>res.json())
-// .then(data=>apiHandler(data.results));
 .then(data=>data.results.map(obj=>cardCreator(obj)));
 };
 
-// function apiHandler(e){
-//     e.map(obj=>cardCreator(obj))
-// };
-
 function cardCreator(e){
+    // console.log(e);
     let li = document.createElement('li');
     li.className = 'card';
-    li.innerHTML = `
-    <h2>Product: ${e.product_description}</h2>
-    <h3>Location: ${e.city}, ${e.state}</h3>
-    <p>Reason for Recall: ${e.reason_for_recall}</p>
-    `
-    recallContainer.appendChild(li);
-}
+    li.display = 'block';
+    let h2 = document.createElement('h2');
+    h2.innerText = `Product: ${e.product_description}`;
+    recallContainer.append(h2);
+    let h3a = document.createElement('h3');
+    h3a.innerText = `City: ${e.city}`;
+    recallContainer.append(h3a);
+    let h3b = document.createElement('h3');
+    h3b.innerText = `State: ${e.state}`;
+    recallContainer.append(h3b);
+    let h4 = document.createElement('h4');
+    h4.innerText = `Zipcode: ${e.postal_code}`;
+    recallContainer.append(h4);
+    let p = document.createElement('p');
+    p.innerText = `Reason for Recall: ${e.reason_for_recall}`;
+    recallContainer.append(p);
 
-searchForm.addEventListener('submit', submitHandler);
+    // li.innerHTML = `
+    // <h2>Product: ${e.product_description}</h2>
+    // <h3>Location: ${e.city}, ${e.state}</h3>
+    // <p>Reason for Recall: ${e.reason_for_recall}</p>
+    // `
+    recallContainer.appendChild(li);
+};
 
 function submitHandler(e){
     e.preventDefault();
     let stateInput = dropdownMenu.value;
     console.log(stateInput);
-    // dataContainer.innerText="";
-    narrowSearch(stateInput);
+    // narrowSearch(stateInput);
 }
 
 function narrowSearch(state){
@@ -55,9 +71,12 @@ function narrowSearch(state){
         .map(obj=>cardCreator(obj)));
 };
 
+// narrowSearch('CA');
 
 
-narrowSearch('CA');
+
+
+
 
 
 // *********TO DO LIST - User deliverables *******
