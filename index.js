@@ -31,7 +31,7 @@ function cardCreator(e){
     // console.log(e);
     let li = document.createElement('li');
     li.className = 'card';
-    li.style.display = 'block';
+    li.style.display = 'inline-grid';
     let h2 = document.createElement('h2');
     h2.innerText = `Product: ${e.product_description}`;
     li.append(h2);
@@ -74,7 +74,7 @@ function narrowSearch(arr, state){
 
 function allRecalls(arr){
     for (elem of arr){
-        elem.style.display = 'block';
+        elem.style.display = 'inline-grid';
     }
 };
 
