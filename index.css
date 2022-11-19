@@ -2,9 +2,13 @@ body {
     background-color: #e9edc9;
 }
 
+h1{
+  text-align: center;
+}
+
 #search-bar{
   background-color: red;
-
+  text-align: center;
 }
 
 /* #data-container{
