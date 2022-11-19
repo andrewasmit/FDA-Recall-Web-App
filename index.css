@@ -4,6 +4,7 @@ body {
 
 h1{
   text-align: center;
+  font-size: 3rem;
 }
 
 #search-bar{
@@ -11,12 +12,12 @@ h1{
   text-align: center;
 }
 
-/* #data-container{
-  display: flex
+#data-container{
+  /* display: flex
   justify-content:center;
-  align-items: center;
-  margin:0, auto;
-} */
+  align-items: center; */
+  margin:0 auto;
+}
 
 .card {
     text-align: center;

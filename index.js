@@ -68,6 +68,8 @@ function narrowSearch(arr, state){
         let target = elem.childNodes[2].innerText.slice(7);
         if (target !== state){
             elem.style.display = 'none';
+        } while (!elem.contains() ){
+            console.log('No Recall');
         }
     } 
 };
