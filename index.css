@@ -10,6 +10,8 @@ h1{
 #search-bar{
   background-color: red;
   text-align: center;
+  padding-bottom: 30px;
+  padding-top: 10px;
 }
 
 #data-container{
@@ -23,7 +25,7 @@ h1{
     text-align: center;
     border: grey solid 1px;
     padding: 1rem;
-    width: 30rem;
+    width: 20em;
     height: auto;
     display: inline-grid;
     margin: 1rem 2rem;
@@ -46,4 +48,8 @@ h1{
     background-color: #83C5BE;
     border: #e04b52 solid 1px;
     color: #e04b52;
+  }
+
+  #dropdown-menu{
+    text-align: center;
   }

@@ -4,7 +4,6 @@ const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
 // ______Query Selector Variable Declarations______
 const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
-const submitBtn = document.querySelector('#submit-search-btn');
 const restoreBtn = document.querySelector('#restore-btn');
 const zipInput = document.querySelector('#zipInput')
 const dropdownMenu = document.querySelector('#dropdown-menu');
@@ -72,8 +71,7 @@ function narrowSearch(arr, state){
             elem.style.display = 'none';
             return counter++;
         } 
-    }); 
-        
+    })
     if (counter === arr.length){
         let update = `There are currently no recalls in the state of ${state}.`;
         window.alert(update);
