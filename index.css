@@ -54,3 +54,10 @@ h1{
   #dropdown-menu{
     text-align: center;
   }
+
+  footer p{
+    background-color: #e04b52;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }

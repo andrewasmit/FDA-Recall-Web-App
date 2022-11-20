@@ -74,7 +74,7 @@ function narrowSearch(arr, state){
     })
     if (counter === arr.length){
         let update = `There are currently no recalls in the state of ${state}.`;
-        setTimeout(function(){window.alert(update);}, 200);
+        setTimeout(function(){window.alert(update);}, 100);
     }
 };
 
