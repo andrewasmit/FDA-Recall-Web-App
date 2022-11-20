@@ -39,7 +39,6 @@ function cardCreator(e){
     h3a.innerText = `City: ${e.city}`;
     li.append(h3a);
     let h3b = document.createElement('h3');
-    h3b.innerHTML = 'id= stateId';
     h3b.innerText = `State: ${e.state}`;
     li.append(h3b);
     let h4 = document.createElement('h4');
@@ -73,7 +72,9 @@ function narrowSearch(arr, state){
             elem.style.display = 'none';
             return counter++;
         } 
-    }); if (counter = arr.length){
+    }); 
+        
+    if (counter === arr.length){
         let update = `There are currently no recalls in the state of ${state}.`;
         window.alert(update);
     }
