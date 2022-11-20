@@ -1,7 +1,7 @@
-// FDA Recall Database 
+// ______FDA Recall Database______
 const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
 
-// Query Selector Variable Declarations
+// ______Query Selector Variable Declarations______
 const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
 const submitBtn = document.querySelector('#submit-search-btn');
@@ -9,25 +9,24 @@ const restoreBtn = document.querySelector('#restore-btn');
 const zipInput = document.querySelector('#zipInput')
 const dropdownMenu = document.querySelector('#dropdown-menu');
 const searchForm = document.querySelector('#search-bar')
-// const lis = document.getElementsByTagName('li');
-// // const lisArr = Array.from(lis);
-// // console.log(lisArr);
 
 
-// ____Event Listeners
+// ____Event Listeners______
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
 searchForm.addEventListener('submit', submitHandler);
 dropdownMenu.onchange = submitHandler;
+// Another event listener inside the scope of the submitHandler function 
 
 
-
-// ____Function Declarations
+// ____Function Declarations______
+// Render the data from the API
 function displayAllRecalls(){
 fetch(fdaRecallAPIBase)
 .then(res=>res.json())
 .then(data=>data.results.map(obj=>cardCreator(obj)));
 };
 
+// Organize the data from the API and render it onto the DOM
 function cardCreator(e){
     // console.log(e);
     let li = document.createElement('li');
@@ -52,6 +51,7 @@ function cardCreator(e){
     recallContainer.appendChild(li);
 };
 
+// Handle the information from the search feature and send that state target to narrowSearch funtion
 function submitHandler(e){
     e.preventDefault();
     let stateInput = dropdownMenu.value;
@@ -64,6 +64,7 @@ function submitHandler(e){
     });
 };
 
+// Use the target info to isolate cards initalially rendered from the API and only display the cards that match that target state
 function narrowSearch(arr, state){
     let counter = 0;
     arr.forEach(elem=>{
@@ -73,40 +74,16 @@ function narrowSearch(arr, state){
             return counter++;
         } 
     }); if (counter = arr.length){
-        let update = `There is currently no recall for ${state}.`;
+        let update = `There are currently no recalls in the state of ${state}.`;
         window.alert(update);
     }
 };
 
+// A simple function to display all recalls. Intended to be a reset from anytime narrowSearch is used
 function allRecalls(arr){
     for (elem of arr){
         elem.style.display = 'inline-grid';
     }
 };
-
-
-
-// narrowSearch('CA');
-
-
-
-
-
-
-// *********TO DO LIST - User deliverables *******
-// 1. Create a displayAllRecalls() function that takes each obj and displays it on the DOM through a cardHandler() function 
-// DONE!!!
-
-// 2. Trigger displayAllRecalls after DOMContentLoaded event listenser. 
-// DONE!!!
-
-// 3. Create a search bar that can help search the state where a recall is issued. (Dropdown bar for all 50???)
-// DONE!!!
-// 4. When you click on an obj, it displays in a bigger view or a different manner
-
-
-// *********It would be nice to's... *******
-// 1. Dark-mode toggle
-
 
  
