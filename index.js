@@ -17,6 +17,7 @@ const searchForm = document.querySelector('#search-bar')
 // ____Event Listeners
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
 searchForm.addEventListener('submit', submitHandler);
+dropdownMenu.onchange = submitHandler;
 
 
 
@@ -68,9 +69,10 @@ function narrowSearch(arr, state){
         let target = elem.childNodes[2].innerText.slice(7);
         if (target !== state){
             elem.style.display = 'none';
-        } while (!elem.contains() ){
-            console.log('No Recall');
-        }
+        } 
+        // while (!elem.contains() ){
+        //     console.log('No Recall');
+        // }
     } 
 };
 
