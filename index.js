@@ -65,15 +65,16 @@ function submitHandler(e){
 };
 
 function narrowSearch(arr, state){
-    for (elem of arr){
-        let counter =0;
+    let counter = 0;
+    arr.forEach(elem=>{
         let target = elem.childNodes[2].innerText.slice(7);
         if (target !== state){
             elem.style.display = 'none';
-            counter++;
+            return counter++;
         } 
-    } if (counter = arr.length){
-        console.log(`There is currently no recall for ${state}.`)
+    }); if (counter = arr.length){
+        let update = `There is currently no recall for ${state}.`;
+        window.alert(update);
     }
 };
 
