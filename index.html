@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FDA Recalls</title>
     <link rel="stylesheet" href="index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@200;400;700&display=swap" rel="stylesheet">  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
   <body>
     <header>
       <h1>FDA Recalls</h1>
@@ -22,7 +26,7 @@
           default="  -- select an option -- "
         >
           <option disabled selected value>--Select a State--</option>
-          <option value="AL">Alabama</option>
+          <!-- <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
           <option value="AR">Arkansas</option>
@@ -72,10 +76,10 @@
           <option value="WA">Washington</option>
           <option value="WV">West Virginia</option>
           <option value="WI">Wisconsin</option>
-          <option value="WY">Wyoming</option>
+          <option value="WY">Wyoming</option> -->
         </select>
       </form>
-<br>
+      <br />
 
       <button class="button" id="restore-btn">All Recalls</button>
     </nav>
@@ -83,7 +87,11 @@
       <ul id="recall-container"></ul>
     </div>
     <footer>
-      <p>This web app utilizes an API from the <a href="https://www.fda.gov/" target="_blank">FDA</a>. It is styled with vanilla CSS and Google Fonts.</p>
+      <p>
+        This web app utilizes an API from the
+        <a href="https://www.fda.gov/" target="_blank">FDA</a>. It is styled
+        with vanilla CSS and Google Fonts.
+      </p>
     </footer>
     <script src="index.js"></script>
   </body>

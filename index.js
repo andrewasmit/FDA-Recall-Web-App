@@ -9,10 +9,10 @@ const dropdownMenu = document.querySelector('#dropdown-menu');
 const searchForm = document.querySelector('#search-bar')
 
 
+
 // ____Event Listeners______
 document.addEventListener('DOMContentLoaded', displayAllRecalls);
-searchForm.addEventListener('submit', submitHandler);
-dropdownMenu.onchange = submitHandler;
+dropdownMenu.addEventListener('change', submitHandler);
 // Another event listener inside the scope of the submitHandler function 
 
 
@@ -22,6 +22,7 @@ function displayAllRecalls(){
 fetch(fdaRecallAPIBase)
 .then(res=>res.json())
 .then(data=>data.results.map(obj=>cardCreator(obj)));
+createOptions(states);
 };
 
 // Organize the data from the API and render it onto the DOM
@@ -84,4 +85,68 @@ function allRecalls(arr){
     }
 };
 
- 
+ const states = {
+ "AL":"Alabama",
+ "AK":"Alaska",
+ "AZ":"Arizona",
+ "AR":"Arkansas",
+ "CA":"California",
+ "CO":"Colorado",
+ "CT":"Connecticut",
+ "DE":"Delaware",
+ "DC":"District Of Columbia",
+ "FL":"Florida",
+ "GA":"Georgia",
+ "HI":"Hawaii",
+ "ID":"Idaho",
+ "IL":"Illinois",
+ "IN":"Indiana",
+ "IA":"Iowa",
+ "KS":"Kansas",
+ "KY":"Kentucky",
+ "LA":"Louisiana",
+ "ME":"Maine",
+"MD": "Maryland",
+"MA":"Massachusetts",
+"MI":"Michigan",
+"MN":"Minnesota",
+"MS":"Mississippi",
+"MO":"Missouri",
+"MT":"Montana",
+"NE":"Nebraska",
+"NV":"Nevada",
+"NH":"New Hampshire",
+"NJ":"New Jersey",
+"NM":"New Mexico",
+"NY":"New York",
+"NC":"North Carolina",
+"ND":"North Dakota",
+"OH":"Ohio",
+"OK":"Oklahoma",
+"OR":"Oregon",
+"PA":"Pennsylvania",
+"RI":"Rhode Island",
+"SC":"South Carolina",
+"SD":"South Dakota",
+"TN":"Tennessee",
+"TX":"Texas",
+"UT":"Utah",
+"VT":"Vermont",
+"VA":"Virginia",
+"WA":"Washington",
+"WV":"West Virginia",
+"WI":"Wisconsin"
+};
+
+
+function createOptions(obj){
+    for (elem in obj){
+        let abrv = `${elem}`;
+        let longName = `${obj[elem]}`;
+        let option = document.createElement('option');
+        option.value = abrv;
+        option.innerText = longName;
+        dropdownMenu.appendChild(option);
+    }
+};
+
