@@ -28,22 +28,22 @@ createOptions(states);
 // Organize the data from the API and render it onto the DOM
 function cardCreator(e){
     // console.log(e);
-    let li = document.createElement('li');
+    const li = document.createElement('li');
     li.className = 'card';
     li.style.display = 'inline-grid';
-    let h2 = document.createElement('h2');
+    const h2 = document.createElement('h2');
     h2.innerText = `Product: ${e.product_description}`;
     li.append(h2);
-    let h3a = document.createElement('h3');
+    const h3a = document.createElement('h3');
     h3a.innerText = `City: ${e.city}`;
     li.append(h3a);
-    let h3b = document.createElement('h3');
+    const h3b = document.createElement('h3');
     h3b.innerText = `State: ${e.state}`;
     li.append(h3b);
-    let h4 = document.createElement('h4');
+    const h4 = document.createElement('h4');
     h4.innerText = `Zipcode: ${e.postal_code}`;
     li.append(h4);
-    let p = document.createElement('p');
+    const p = document.createElement('p');
     p.innerText = `Reason for Recall: ${e.reason_for_recall}`;
     li.append(p);
     recallContainer.appendChild(li);
@@ -52,7 +52,7 @@ function cardCreator(e){
 // Handle the information from the search feature and send that state target to narrowSearch funtion
 function submitHandler(e){
     e.preventDefault();
-    let stateInput = dropdownMenu.value;
+    const stateInput = dropdownMenu.value;
     const lis = document.getElementsByTagName('li');
     const lisArr = Array.from(lis);
     allRecalls(lisArr);
@@ -66,14 +66,14 @@ function submitHandler(e){
 function narrowSearch(arr, state){
     let counter = 0;
     arr.forEach(elem=>{
-        let target = elem.childNodes[2].innerText.slice(7);
+        const target = elem.childNodes[2].innerText.slice(7);
         if (target !== state){
             elem.style.display = 'none';
             return counter++;
         } 
     })
     if (counter === arr.length){
-        let update = `There are currently no recalls in the state of ${state}.`;
+        const update = `There are currently no recalls in the state of ${state}.`;
         setTimeout(function(){window.alert(update);}, 100);
     }
 };
@@ -106,44 +106,44 @@ function allRecalls(arr){
  "KY":"Kentucky",
  "LA":"Louisiana",
  "ME":"Maine",
-"MD": "Maryland",
-"MA":"Massachusetts",
-"MI":"Michigan",
-"MN":"Minnesota",
-"MS":"Mississippi",
-"MO":"Missouri",
-"MT":"Montana",
-"NE":"Nebraska",
-"NV":"Nevada",
-"NH":"New Hampshire",
-"NJ":"New Jersey",
-"NM":"New Mexico",
-"NY":"New York",
-"NC":"North Carolina",
-"ND":"North Dakota",
-"OH":"Ohio",
-"OK":"Oklahoma",
-"OR":"Oregon",
-"PA":"Pennsylvania",
-"RI":"Rhode Island",
-"SC":"South Carolina",
-"SD":"South Dakota",
-"TN":"Tennessee",
-"TX":"Texas",
-"UT":"Utah",
-"VT":"Vermont",
-"VA":"Virginia",
-"WA":"Washington",
-"WV":"West Virginia",
-"WI":"Wisconsin"
+ "MD": "Maryland",
+ "MA":"Massachusetts",
+ "MI":"Michigan",
+ "MN":"Minnesota",
+ "MS":"Mississippi",
+ "MO":"Missouri",
+ "MT":"Montana",
+ "NE":"Nebraska",
+ "NV":"Nevada",
+ "NH":"New Hampshire",
+ "NJ":"New Jersey",
+ "NM":"New Mexico",
+ "NY":"New York",
+ "NC":"North Carolina",
+ "ND":"North Dakota",
+ "OH":"Ohio",
+ "OK":"Oklahoma",
+ "OR":"Oregon",
+ "PA":"Pennsylvania",
+ "RI":"Rhode Island",
+ "SC":"South Carolina",
+ "SD":"South Dakota",
+ "TN":"Tennessee",
+ "TX":"Texas",
+ "UT":"Utah",
+ "VT":"Vermont",
+ "VA":"Virginia",
+ "WA":"Washington",
+ "WV":"West Virginia",
+ "WI":"Wisconsin"
 };
 
 
 function createOptions(obj){
     for (elem in obj){
-        let abrv = `${elem}`;
-        let longName = `${obj[elem]}`;
-        let option = document.createElement('option');
+        const abrv = `${elem}`;
+        const longName = `${obj[elem]}`;
+        const option = document.createElement('option');
         option.value = abrv;
         option.innerText = longName;
         dropdownMenu.appendChild(option);
