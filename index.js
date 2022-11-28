@@ -2,7 +2,6 @@
 const fdaRecallAPIBase = 'https://api.fda.gov/food/enforcement.json?limit=10';
 
 // ______Query Selector Variable Declarations______
-const dataContainer = document.querySelector('#data-container');
 const recallContainer = document.querySelector('#recall-container');
 const restoreBtn = document.querySelector('#restore-btn');
 const dropdownMenu = document.querySelector('#dropdown-menu');
